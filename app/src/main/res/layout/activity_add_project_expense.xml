@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sakura_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Expense"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#EC407A"/>
+
+        <EditText
+            android:id="@+id/etExpenseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Expense Name"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:id="@+id/btnSaveExpense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Expense"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#EC407A"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style
+        name="Base.Theme.BarangayProjectPortal"
+        parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Primary Sakura Pink -->
+        <item name="colorPrimary">#EC407A</item>
+
+        <!-- Soft Sakura Pink -->
+        <item name="colorSecondary">#F48FB1</item>
+
+        <!-- Cherry Blossom Pink -->
+        <item name="colorTertiary">#F8BBD0</item>
+
+        <!-- App Background -->
+        <item name="android:colorBackground">#FFF5F8</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">#EC407A</item>
+
+    </style>
+
+    <style
+        name="Theme.BarangayProjectPortal"
+        parent="Base.Theme.BarangayProjectPortal" />
+
+</resources>

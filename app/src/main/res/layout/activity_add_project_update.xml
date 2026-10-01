@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sakura_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Project Update"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#EC407A"/>
+
+        <EditText
+            android:id="@+id/etUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Update Details"
+            android:textColor="#000000"
+            android:textColorHint="#808080"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnSaveUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Update"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#EC407A"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

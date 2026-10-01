@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sakura_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <!-- Header -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/tile_background"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Admin Dashboard"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Tiles -->
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true">
+
+            <Button
+                android:id="@+id/btnAddProject"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/tile_background"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="📁&#10;&#10;Add Project"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_gravity="fill"/>
+
+
+            <Button
+                android:id="@+id/btnViewProjects"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/tile_background"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="📋&#10;&#10;View Projects"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            `
+
+            <Button
+                android:id="@+id/btnCreatePoll"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/tile_background"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="🗳️&#10;&#10;Create Poll"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnViewPolls"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/tile_background"
+                android:backgroundTint="@null"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="📊&#10;&#10;Poll Results"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </GridLayout>
+
+        <!-- Logout -->
+
+        <Button
+            android:id="@+id/btnAddAnnouncement"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/tile_background"
+            android:backgroundTint="@null"
+            android:text="📢 Add Announcement"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnViewAnnouncements"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/tile_background"
+            android:backgroundTint="@null"
+            android:text="📣 View Announcements"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/tile_background"
+            android:backgroundTint="@null"
+            android:text="🚪 Logout"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
