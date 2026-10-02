@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -69,6 +73,10 @@ public class ViewProjectUpdatesActivity extends AppCompatActivity {
                                 document.getString(
                                         "date"
                                 );
+                        String imageUrl =
+                                document.getString(
+                                        "imageUrl"
+                                );
 
                         LinearLayout card =
                                 new LinearLayout(this);
@@ -107,6 +115,28 @@ public class ViewProjectUpdatesActivity extends AppCompatActivity {
 
                         card.setElevation(12f);
 
+                        ImageView updateImage =
+                                new ImageView(this);
+
+                        updateImage.setLayoutParams(
+                                new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        350
+                                )
+                        );
+
+                        updateImage.setScaleType(
+                                ImageView.ScaleType.CENTER_CROP
+                        );
+
+                        if (imageUrl != null
+                                && !imageUrl.isEmpty()) {
+
+                            Glide.with(this)
+                                    .load(imageUrl)
+                                    .into(updateImage);
+                        }
+
                         TextView tv =
                                 new TextView(this);
 
@@ -131,6 +161,7 @@ public class ViewProjectUpdatesActivity extends AppCompatActivity {
                                 Color.BLACK
                         );
 
+                        card.addView(updateImage);
                         card.addView(tv);
 
                         updateContainer.addView(card);

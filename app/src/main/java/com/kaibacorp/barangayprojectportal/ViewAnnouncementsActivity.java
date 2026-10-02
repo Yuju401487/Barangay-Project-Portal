@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -52,6 +55,10 @@ public class ViewAnnouncementsActivity extends AppCompatActivity {
                         String date =
                                 document.getString("date");
 
+                        String imageUrl =
+                                document.getString("imageUrl");
+
+
                         LinearLayout card =
                                 new LinearLayout(this);
 
@@ -86,6 +93,28 @@ public class ViewAnnouncementsActivity extends AppCompatActivity {
                         );
 
                         card.setElevation(12f);
+
+                        ImageView announcementImage =
+                                new ImageView(this);
+
+                        announcementImage.setLayoutParams(
+                                new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        350
+                                )
+                        );
+
+                        announcementImage.setScaleType(
+                                ImageView.ScaleType.CENTER_CROP
+                        );
+
+                        if (imageUrl != null
+                                && !imageUrl.isEmpty()) {
+
+                            Glide.with(this)
+                                    .load(imageUrl)
+                                    .into(announcementImage);
+                        }
 
                         TextView tv =
                                 new TextView(this);
@@ -216,6 +245,7 @@ public class ViewAnnouncementsActivity extends AppCompatActivity {
 
                         });
 
+                        card.addView(announcementImage);
                         card.addView(tv);
                         card.addView(btnDetails);
                         card.addView(btnUpdate);

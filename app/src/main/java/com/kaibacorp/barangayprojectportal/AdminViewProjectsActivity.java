@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,6 +109,7 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
                         String description = document.getString("description");
                         String budget = document.getString("budget");
                         String status = document.getString("status");
+                        String imageUrl = document.getString("imageUrl");
 
                         String raoRefCode =
                                 document.getString("raoRefCode");
@@ -157,6 +161,28 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
                                         "#FCE4EC"
                                 )
                         );
+
+                        ImageView projectImage =
+                                new ImageView(this);
+
+                        projectImage.setLayoutParams(
+                                new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        500
+                                )
+                        );
+
+                        projectImage.setScaleType(
+                                ImageView.ScaleType.CENTER_CROP
+                        );
+
+                        if (imageUrl != null &&
+                                !imageUrl.isEmpty()) {
+
+                            Glide.with(this)
+                                    .load(imageUrl)
+                                    .into(projectImage);
+                        }
 
                         TextView tv = new TextView(this);
 
@@ -428,6 +454,7 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
 
                         });
 
+                        card.addView(projectImage);
                         card.addView(tv);
                         card.addView(btnDetails);
                         card.addView(btnUpdate);

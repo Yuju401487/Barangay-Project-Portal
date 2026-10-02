@@ -20,6 +20,28 @@
             android:textColor="#EC407A"
             android:layout_marginBottom="24dp"/>
 
+        <!-- IMAGE PREVIEW -->
+
+        <ImageView
+            android:id="@+id/imgProjectPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="12dp"
+            android:background="#FCE4EC"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"/>
+
+        <!-- CHOOSE IMAGE BUTTON -->
+
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📷 Choose Project Image"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#EC407A"
+            android:layout_marginBottom="20dp"/>
+
         <EditText
             android:id="@+id/etTitle"
             android:layout_width="match_parent"

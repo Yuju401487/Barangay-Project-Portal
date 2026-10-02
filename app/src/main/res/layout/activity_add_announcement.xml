@@ -36,6 +36,24 @@
             android:textColorHint="#808080"
             android:layout_marginTop="12dp"/>
 
+        <ImageView
+            android:id="@+id/imgAnnouncementPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="#FCE4EC"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"/>
+
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#EC407A"
+            android:text="📷 Choose Announcement Image"
+            android:textColor="#FFFFFF"/>
+
         <Button
             android:id="@+id/btnSaveAnnouncement"
             android:layout_width="match_parent"

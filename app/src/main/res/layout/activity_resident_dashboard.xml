@@ -12,9 +12,13 @@
         android:padding="24dp">
 
         <!-- Header -->
+
+
+        <!-- Logout -->
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="335dp"
+            android:layout_height="75dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/tile_background"
             android:elevation="12dp"
@@ -24,6 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text=" Resident Dashboard"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
@@ -31,20 +36,20 @@
 
         </LinearLayout>
 
-
         <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="357dp"
+            android:layout_height="358dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:columnCount="2">
 
             <Button
                 android:id="@+id/btnViewProjects"
-                android:layout_width="162dp"
-                android:layout_height="162dp"
+                android:layout_width="127dp"
+                android:layout_height="148dp"
                 android:layout_row="0"
                 android:layout_column="0"
+                android:layout_gravity="fill"
                 android:layout_margin="8dp"
                 android:background="@drawable/tile_background"
                 android:backgroundTint="@null"
@@ -52,12 +57,11 @@
                 android:text="📋&#10;View Projects"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_gravity="fill"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnViewAnnouncements"
-                android:layout_width="162dp"
+                android:layout_width="160dp"
                 android:layout_height="162dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/tile_background"
@@ -70,7 +74,7 @@
 
             <Button
                 android:id="@+id/btnVotePoll"
-                android:layout_width="162dp"
+                android:layout_width="160dp"
                 android:layout_height="162dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/tile_background"
@@ -83,7 +87,7 @@
 
             <Button
                 android:id="@+id/btnPollResults"
-                android:layout_width="162dp"
+                android:layout_width="160dp"
                 android:layout_height="162dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/tile_background"
@@ -96,7 +100,6 @@
 
         </GridLayout>
 
-        <!-- Logout -->
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"

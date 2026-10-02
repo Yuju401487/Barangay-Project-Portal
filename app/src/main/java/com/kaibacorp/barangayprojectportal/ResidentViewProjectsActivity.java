@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -114,6 +118,9 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
                         String status =
                                 document.getString("status");
 
+                        String imageUrl =
+                                document.getString("imageUrl");
+
                         String raoRefCode =
                                 document.getString("raoRefCode");
 
@@ -166,6 +173,28 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
                                         "#FCE4EC"
                                 )
                         );
+
+                        ImageView projectImage =
+                                new ImageView(this);
+
+                        projectImage.setLayoutParams(
+                                new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        500
+                                )
+                        );
+
+                        projectImage.setScaleType(
+                                ImageView.ScaleType.CENTER_CROP
+                        );
+
+                        if (imageUrl != null
+                                && !imageUrl.isEmpty()) {
+
+                            Glide.with(this)
+                                    .load(imageUrl)
+                                    .into(projectImage);
+                        }
 
                         card.setElevation(12f);
 
@@ -402,6 +431,7 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
                         });
 
 
+                        card.addView(projectImage);
                         card.addView(tv);
                         card.addView(btnDetails);
                         card.addView(btnViewTimeline);
