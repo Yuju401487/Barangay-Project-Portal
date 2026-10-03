@@ -6,6 +6,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,6 +68,11 @@ public class VotePollActivity extends AppCompatActivity {
 
         btnVote.setOnClickListener(v -> {
 
+            String userEmail =
+                    FirebaseAuth.getInstance()
+                            .getCurrentUser()
+                            .getEmail();
+
             int selectedId =
                     radioGroupOptions
                             .getCheckedRadioButtonId();
@@ -80,49 +88,90 @@ public class VotePollActivity extends AppCompatActivity {
                 return;
             }
 
-            if(selectedId == R.id.rbOption1){
+            db.collection("poll_votes")
+                    .whereEqualTo(
+                            "pollId",
+                            pollId
+                    )
+                    .whereEqualTo(
+                            "userEmail",
+                            userEmail
+                    )
+                    .get()
+                    .addOnSuccessListener(snapshot -> {
 
-                db.collection("polls")
-                        .document(pollId)
-                        .update(
-                                "votes1",
-                                votes1 + 1
+                        if (!snapshot.isEmpty()) {
+
+                            Toast.makeText(
+                                    this,
+                                    "You already voted",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+
+                            return;
+                        }
+
+                        HashMap<String, Object> vote =
+                                new HashMap<>();
+
+                        vote.put(
+                                "pollId",
+                                pollId
                         );
 
-            }
-            else if(selectedId == R.id.rbOption2){
-
-                db.collection("polls")
-                        .document(pollId)
-                        .update(
-                                "votes2",
-                                votes2 + 1
+                        vote.put(
+                                "userEmail",
+                                userEmail
                         );
 
-            }
-            else{
+                        db.collection("poll_votes")
+                                .add(vote);
 
-                db.collection("polls")
-                        .document(pollId)
-                        .update(
-                                "votes3",
-                                votes3 + 1
-                        );
+                        if(selectedId == R.id.rbOption1){
 
-            }
+                            db.collection("polls")
+                                    .document(pollId)
+                                    .update(
+                                            "votes1",
+                                            votes1 + 1
+                                    );
 
-            Toast.makeText(
-                    this,
-                    "Vote Submitted",
-                    Toast.LENGTH_SHORT
-            ).show();
+                        }
+                        else if(selectedId == R.id.rbOption2){
 
-            finish();
+                            db.collection("polls")
+                                    .document(pollId)
+                                    .update(
+                                            "votes2",
+                                            votes2 + 1
+                                    );
+
+                        }
+                        else{
+
+                            db.collection("polls")
+                                    .document(pollId)
+                                    .update(
+                                            "votes3",
+                                            votes3 + 1
+                                    );
+
+                        }
+
+                        Toast.makeText(
+                                VotePollActivity.this,
+                                "Vote Submitted",
+                                Toast.LENGTH_SHORT
+                        ).show();
+
+                        finish();
+
 
         });
 
-    }
+    });
 
+}
     private void loadPoll() {
 
         db.collection("polls")
