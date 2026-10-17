@@ -17,7 +17,7 @@
             android:text="Create Poll"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#EC407A"/>
+            android:textColor="#EC407A" />
 
         <EditText
             android:id="@+id/etQuestion"
@@ -25,40 +25,49 @@
             android:layout_height="wrap_content"
             android:hint="Poll Question"
             android:textColor="#000000"
-            android:textColorHint="#808080"/>
+            android:textColorHint="#808080" />
 
-        <EditText
-            android:id="@+id/etOption1"
+        <LinearLayout
+            android:id="@+id/optionsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Option 1"
-            android:textColor="#000000"
-            android:textColorHint="#808080"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etOption2"
+            <EditText
+                android:id="@+id/etOption1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option 1"
+                android:textColor="#000000"
+                android:textColorHint="#808080" />
+
+            <EditText
+                android:id="@+id/etOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Option 2"
+                android:textColor="#000000"
+                android:textColorHint="#808080" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAddOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Option 2"
-            android:textColor="#000000"
-            android:textColorHint="#808080"/>
-
-        <EditText
-            android:id="@+id/etOption3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Option 3"
-            android:textColor="#000000"
-            android:textColorHint="#808080"/>
+            android:layout_marginTop="10dp"
+            android:text="+ Add Option"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#EC407A" />
 
         <Button
             android:id="@+id/btnCreatePoll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Create Poll"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#EC407A"
-            android:layout_marginTop="20dp"/>
+            android:backgroundTint="#EC407A" />
 
     </LinearLayout>
 

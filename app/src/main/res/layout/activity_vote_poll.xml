@@ -17,42 +17,22 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#EC407A"/>
+            android:textColor="#EC407A" />
 
         <RadioGroup
             android:id="@+id/radioGroupOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <RadioButton
-                android:id="@+id/rbOption1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"/>
-
-            <RadioButton
-                android:id="@+id/rbOption2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"/>
-
-            <RadioButton
-                android:id="@+id/rbOption3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"/>
-
-        </RadioGroup>
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/btnVote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="CAST VOTE"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#EC407A"
-            android:layout_marginTop="20dp"/>
+            android:backgroundTint="#EC407A" />
 
     </LinearLayout>
 

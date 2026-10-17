@@ -41,28 +41,6 @@ public class ViewPollResultsActivity extends AppCompatActivity {
                     String question =
                             document.getString("question");
 
-                    String option1 =
-                            document.getString("option1");
-
-                    String option2 =
-                            document.getString("option2");
-
-                    String option3 =
-                            document.getString("option3");
-
-                    Long votes1 =
-                            document.getLong("votes1");
-
-                    Long votes2 =
-                            document.getLong("votes2");
-
-                    Long votes3 =
-                            document.getLong("votes3");
-
-                    if (votes1 == null) votes1 = 0L;
-                    if (votes2 == null) votes2 = 0L;
-                    if (votes3 == null) votes3 = 0L;
-
                     resultsContainer.removeAllViews();
 
                     TextView tvQuestion =
@@ -85,21 +63,36 @@ public class ViewPollResultsActivity extends AppCompatActivity {
 
                     resultsContainer.addView(tvQuestion);
 
-                    addResultCard(
-                            option1,
-                            votes1
-                    );
+                    int optionNumber = 1;
 
-                    addResultCard(
-                            option2,
-                            votes2
-                    );
+                    while (true) {
 
-                    addResultCard(
-                            option3,
-                            votes3
-                    );
+                        String option =
+                                document.getString(
+                                        "option" + optionNumber
+                                );
 
+                        if (option == null ||
+                                option.trim().isEmpty()) {
+                            break;
+                        }
+
+                        Long votes =
+                                document.getLong(
+                                        "votes" + optionNumber
+                                );
+
+                        if (votes == null) {
+                            votes = 0L;
+                        }
+
+                        addResultCard(
+                                option,
+                                votes
+                        );
+
+                        optionNumber++;
+                    }
                 });
 
     }
@@ -162,6 +155,5 @@ public class ViewPollResultsActivity extends AppCompatActivity {
         card.addView(tv);
 
         resultsContainer.addView(card);
-
     }
 }

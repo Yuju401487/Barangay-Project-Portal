@@ -6,33 +6,25 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class VotePollActivity extends AppCompatActivity {
 
     TextView tvQuestion;
-
     RadioGroup radioGroupOptions;
-
-    RadioButton rbOption1;
-    RadioButton rbOption2;
-    RadioButton rbOption3;
-
     Button btnVote;
 
     FirebaseFirestore db;
 
     String pollId;
 
-    long votes1;
-    long votes2;
-    long votes3;
+    int selectedOptionNumber = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +36,6 @@ public class VotePollActivity extends AppCompatActivity {
 
         radioGroupOptions =
                 findViewById(R.id.radioGroupOptions);
-
-        rbOption1 =
-                findViewById(R.id.rbOption1);
-
-        rbOption2 =
-                findViewById(R.id.rbOption2);
-
-        rbOption3 =
-                findViewById(R.id.rbOption3);
 
         btnVote =
                 findViewById(R.id.btnVote);
@@ -74,10 +57,9 @@ public class VotePollActivity extends AppCompatActivity {
                             .getEmail();
 
             int selectedId =
-                    radioGroupOptions
-                            .getCheckedRadioButtonId();
+                    radioGroupOptions.getCheckedRadioButtonId();
 
-            if(selectedId == -1){
+            if (selectedId == -1) {
 
                 Toast.makeText(
                         this,
@@ -87,6 +69,12 @@ public class VotePollActivity extends AppCompatActivity {
 
                 return;
             }
+
+            RadioButton selectedRadio =
+                    findViewById(selectedId);
+
+            selectedOptionNumber =
+                    (int) selectedRadio.getTag();
 
             db.collection("poll_votes")
                     .whereEqualTo(
@@ -127,51 +115,42 @@ public class VotePollActivity extends AppCompatActivity {
                         db.collection("poll_votes")
                                 .add(vote);
 
-                        if(selectedId == R.id.rbOption1){
+                        db.collection("polls")
+                                .document(pollId)
+                                .get()
+                                .addOnSuccessListener(document -> {
 
-                            db.collection("polls")
-                                    .document(pollId)
-                                    .update(
-                                            "votes1",
-                                            votes1 + 1
-                                    );
+                                    Long currentVotes =
+                                            document.getLong(
+                                                    "votes" + selectedOptionNumber
+                                            );
 
-                        }
-                        else if(selectedId == R.id.rbOption2){
+                                    if (currentVotes == null) {
+                                        currentVotes = 0L;
+                                    }
 
-                            db.collection("polls")
-                                    .document(pollId)
-                                    .update(
-                                            "votes2",
-                                            votes2 + 1
-                                    );
+                                    db.collection("polls")
+                                            .document(pollId)
+                                            .update(
+                                                    "votes" + selectedOptionNumber,
+                                                    currentVotes + 1
+                                            );
 
-                        }
-                        else{
+                                    Toast.makeText(
+                                            VotePollActivity.this,
+                                            "Vote Submitted",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
 
-                            db.collection("polls")
-                                    .document(pollId)
-                                    .update(
-                                            "votes3",
-                                            votes3 + 1
-                                    );
+                                    finish();
 
-                        }
+                                });
 
-                        Toast.makeText(
-                                VotePollActivity.this,
-                                "Vote Submitted",
-                                Toast.LENGTH_SHORT
-                        ).show();
-
-                        finish();
-
+                    });
 
         });
+    }
 
-    });
-
-}
     private void loadPoll() {
 
         db.collection("polls")
@@ -180,47 +159,40 @@ public class VotePollActivity extends AppCompatActivity {
                 .addOnSuccessListener(document -> {
 
                     tvQuestion.setText(
-                            document.getString(
-                                    "question"
-                            )
+                            document.getString("question")
                     );
 
-                    rbOption1.setText(
-                            document.getString(
-                                    "option1"
-                            )
-                    );
+                    radioGroupOptions.removeAllViews();
 
-                    rbOption2.setText(
-                            document.getString(
-                                    "option2"
-                            )
-                    );
+                    int optionNumber = 1;
 
-                    rbOption3.setText(
-                            document.getString(
-                                    "option3"
-                            )
-                    );
+                    while (true) {
 
-                    Long v1 =
-                            document.getLong(
-                                    "votes1"
-                            );
+                        String option =
+                                document.getString(
+                                        "option" + optionNumber
+                                );
 
-                    Long v2 =
-                            document.getLong(
-                                    "votes2"
-                            );
+                        if (option == null ||
+                                option.trim().isEmpty()) {
+                            break;
+                        }
 
-                    Long v3 =
-                            document.getLong(
-                                    "votes3"
-                            );
+                        RadioButton rb =
+                                new RadioButton(this);
 
-                    votes1 = v1 == null ? 0 : v1;
-                    votes2 = v2 == null ? 0 : v2;
-                    votes3 = v3 == null ? 0 : v3;
+                        rb.setText(option);
+
+                        rb.setTextColor(
+                                0xFF000000
+                        );
+
+                        rb.setTag(optionNumber);
+
+                        radioGroupOptions.addView(rb);
+
+                        optionNumber++;
+                    }
 
                 });
 
