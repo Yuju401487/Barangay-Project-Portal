@@ -96,6 +96,10 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
         projectContainer.removeAllViews();
 
         db.collection("projects")
+                .orderBy(
+                        "timestamp",
+                        com.google.firebase.firestore.Query.Direction.DESCENDING
+                )
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
 

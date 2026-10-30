@@ -158,6 +158,10 @@ public class AddProjectActivity extends AppCompatActivity {
             project.put("budget", budget);
             project.put("status", status);
             project.put("raoRefCode", raoRefCode);
+            project.put(
+                    "timestamp",
+                    System.currentTimeMillis()
+            );
 
             if (selectedImageUri == null) {
 

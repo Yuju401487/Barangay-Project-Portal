@@ -77,6 +77,11 @@ public class AddProjectExpenseActivity extends AppCompatActivity {
                     ).format(new Date())
             );
 
+            expense.put(
+                    "timestamp",
+                    System.currentTimeMillis()
+            );
+
             db.collection("project_expenses")
                     .add(expense)
                     .addOnSuccessListener(ref -> {

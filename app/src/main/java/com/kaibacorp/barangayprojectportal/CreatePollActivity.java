@@ -88,6 +88,11 @@ public class CreatePollActivity extends AppCompatActivity {
 
             poll.put("question", question);
 
+            poll.put(
+                    "timestamp",
+                    System.currentTimeMillis()
+            );
+
             int validOptions = 0;
 
             for (int i = 0; i < optionFields.size(); i++) {
@@ -134,6 +139,13 @@ public class CreatePollActivity extends AppCompatActivity {
                                 "Poll Created",
                                 Toast.LENGTH_SHORT
                         ).show();
+
+                        NotificationHelper.createNotification(
+                                "New Poll",
+                                question,
+                                "",
+                                "resident"
+                        );
 
                         finish();
 

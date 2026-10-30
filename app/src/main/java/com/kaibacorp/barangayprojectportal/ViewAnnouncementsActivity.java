@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.firestore.Query;
+
 
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
@@ -39,6 +41,10 @@ public class ViewAnnouncementsActivity extends AppCompatActivity {
         announcementContainer.removeAllViews();
 
         db.collection("announcements")
+                .orderBy(
+                        "timestamp",
+                        Query.Direction.DESCENDING
+                )
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -92,6 +93,25 @@ public class ViewPollsActivity extends AppCompatActivity {
                         Button btnResults =
                                 new Button(this);
 
+                        Button btnDelete =
+                                new Button(this);
+
+                        btnDelete.setText(
+                                "DELETE POLL"
+                        );
+
+                        btnDelete.setTextColor(
+                                Color.WHITE
+                        );
+
+                        btnDelete.setBackgroundTintList(
+                                ColorStateList.valueOf(
+                                        Color.parseColor(
+                                                "#EC407A"
+                                        )
+                                )
+                        );
+
                         btnResults.setText(
                                 "VIEW RESULTS"
                         );
@@ -125,8 +145,63 @@ public class ViewPollsActivity extends AppCompatActivity {
 
                         });
 
+                        btnDelete.setOnClickListener(v -> {
+
+                            new androidx.appcompat.app.AlertDialog.Builder(
+                                    ViewPollsActivity.this
+                            )
+                                    .setTitle("Delete Poll")
+                                    .setMessage(
+                                            "Are you sure you want to delete this poll?"
+                                    )
+                                    .setPositiveButton(
+                                            "Delete",
+                                            (dialog, which) -> {
+
+                                                db.collection("polls")
+                                                        .document(
+                                                                document.getId()
+                                                        )
+                                                        .delete()
+                                                        .addOnSuccessListener(unused -> {
+
+                                                            Toast.makeText(
+                                                                    ViewPollsActivity.this,
+                                                                    "Poll Deleted",
+                                                                    Toast.LENGTH_SHORT
+                                                            ).show();
+
+                                                            loadPolls();
+
+                                                        });
+
+                                            }
+                                    )
+                                    .setNegativeButton(
+                                            "Cancel",
+                                            null
+                                    )
+                                    .show();
+
+                        });
+
+                        String role =
+                                getSharedPreferences(
+                                        "USER_DATA",
+                                        MODE_PRIVATE
+                                ).getString(
+                                        "ROLE",
+                                        ""
+                                );
+
                         card.addView(tv);
                         card.addView(btnResults);
+
+                        if ("admin".equalsIgnoreCase(role)) {
+
+                            card.addView(btnDelete);
+
+                        }
 
                         pollContainer.addView(card);
 

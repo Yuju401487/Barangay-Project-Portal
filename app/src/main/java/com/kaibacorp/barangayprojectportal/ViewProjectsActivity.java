@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.firestore.Query;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -111,6 +113,10 @@ public class ViewProjectsActivity extends AppCompatActivity {
         projectContainer.removeAllViews();
 
         db.collection("projects")
+                .orderBy(
+                        "timestamp",
+                        Query.Direction.DESCENDING
+                )
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
 

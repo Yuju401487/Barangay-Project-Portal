@@ -17,6 +17,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     Button btnAddAnnouncement;
     Button btnViewAnnouncements;
     Button btnNotifications;
+    Button btnReports;
     Button btnLogout;
 
     @Override
@@ -44,6 +45,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         btnNotifications =
                 findViewById(R.id.btnNotifications);
+
+        btnReports =
+                findViewById(R.id.btnReports);
 
         btnLogout =
                 findViewById(R.id.btnLogout);
@@ -120,6 +124,17 @@ public class AdminDashboardActivity extends AppCompatActivity {
                     new Intent(
                             AdminDashboardActivity.this,
                             NotificationsActivity.class
+                    )
+            );
+
+        });
+
+        btnReports.setOnClickListener(v -> {
+
+            startActivity(
+                    new Intent(
+                            AdminDashboardActivity.this,
+                            ReportsActivity.class
                     )
             );
 
