@@ -16,6 +16,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     Button btnViewProjects;
     Button btnAddAnnouncement;
     Button btnViewAnnouncements;
+    Button btnNotifications;
     Button btnLogout;
 
     @Override
@@ -35,14 +36,17 @@ public class AdminDashboardActivity extends AppCompatActivity {
         btnViewAnnouncements =
                 findViewById(R.id.btnViewAnnouncements);
 
-        btnLogout =
-                findViewById(R.id.btnLogout);
-
         btnCreatePoll =
                 findViewById(R.id.btnCreatePoll);
 
         btnViewPolls =
                 findViewById(R.id.btnViewPolls);
+
+        btnNotifications =
+                findViewById(R.id.btnNotifications);
+
+        btnLogout =
+                findViewById(R.id.btnLogout);
 
         btnAddProject.setOnClickListener(v -> {
 
@@ -110,6 +114,17 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         });
 
+        btnNotifications.setOnClickListener(v -> {
+
+            startActivity(
+                    new Intent(
+                            AdminDashboardActivity.this,
+                            NotificationsActivity.class
+                    )
+            );
+
+        });
+
         btnLogout.setOnClickListener(v -> {
 
             FirebaseAuth.getInstance().signOut();
@@ -132,6 +147,5 @@ public class AdminDashboardActivity extends AppCompatActivity {
             finish();
 
         });
-
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btnLogin;
     Button btnRegister;
+    TextView tvForgotPassword;
 
     FirebaseAuth auth;
     FirebaseFirestore db;
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -140,6 +143,17 @@ public class LoginActivity extends AppCompatActivity {
                     new Intent(
                             LoginActivity.this,
                             RegisterActivity.class
+                    )
+            );
+
+        });
+
+        tvForgotPassword.setOnClickListener(v -> {
+
+            startActivity(
+                    new Intent(
+                            LoginActivity.this,
+                            ForgotPasswordActivity.class
                     )
             );
 

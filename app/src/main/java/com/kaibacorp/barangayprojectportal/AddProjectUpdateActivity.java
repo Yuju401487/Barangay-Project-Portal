@@ -185,6 +185,13 @@ public class AddProjectUpdateActivity extends AppCompatActivity {
                                                     Toast.LENGTH_SHORT
                                             ).show();
 
+                                            NotificationHelper.createNotification(
+                                                    "Project Update",
+                                                    updateText,
+                                                    imageUrl,
+                                                    "resident"
+                                            );
+
                                             finish();
 
                                         });

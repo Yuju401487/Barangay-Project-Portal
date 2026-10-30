@@ -87,6 +87,19 @@ public class AddProjectExpenseActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT
                         ).show();
 
+                        NotificationHelper.createNotification(
+                                "New Project Expense",
+                                etExpenseName.getText()
+                                        .toString()
+                                        .trim()
+                                        + " - ₱"
+                                        + etAmount.getText()
+                                        .toString()
+                                        .trim(),
+                                "",
+                                "resident"
+                        );
+
                         finish();
 
                     });

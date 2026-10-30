@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class DashboardActivity extends AppCompatActivity {
 
     Button btnLogout;
+    Button btnNotifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,18 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         btnLogout = findViewById(R.id.btnLogout);
+        btnNotifications = findViewById(R.id.btnNotifications);
+
+        btnNotifications.setOnClickListener(v -> {
+
+            startActivity(
+                    new Intent(
+                            DashboardActivity.this,
+                            NotificationsActivity.class
+                    )
+            );
+
+        });
 
         btnLogout.setOnClickListener(v -> {
 
@@ -33,6 +46,5 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
 
         });
-
     }
 }

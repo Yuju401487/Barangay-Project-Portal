@@ -48,7 +48,7 @@ public class AddCommentActivity extends AppCompatActivity {
                             .toString()
                             .trim();
 
-            if(comment.isEmpty()){
+            if (comment.isEmpty()) {
 
                 Toast.makeText(
                         this,
@@ -59,7 +59,7 @@ public class AddCommentActivity extends AppCompatActivity {
                 return;
             }
 
-            HashMap<String,Object> data =
+            HashMap<String, Object> data =
                     new HashMap<>();
 
             data.put(
@@ -87,7 +87,9 @@ public class AddCommentActivity extends AppCompatActivity {
                     new SimpleDateFormat(
                             "MMMM dd, yyyy",
                             Locale.getDefault()
-                    ).format(new Date())
+                    ).format(
+                            new Date()
+                    )
             );
 
             db.collection("comments")
@@ -100,7 +102,23 @@ public class AddCommentActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT
                         ).show();
 
+                        NotificationHelper.createNotification(
+                                "New Comment",
+                                comment,
+                                "",
+                                "admin"
+                        );
+
                         finish();
+
+                    })
+                    .addOnFailureListener(e -> {
+
+                        Toast.makeText(
+                                this,
+                                e.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show();
 
                     });
 

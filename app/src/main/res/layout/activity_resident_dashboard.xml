@@ -11,13 +11,8 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Header -->
-
-
-        <!-- Logout -->
-
         <LinearLayout
-            android:layout_width="335dp"
+            android:layout_width="365dp"
             android:layout_height="75dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/tile_background"
@@ -28,7 +23,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text=" Resident Dashboard"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
@@ -99,6 +93,19 @@
                 android:textStyle="bold" />
 
         </GridLayout>
+
+        <Button
+            android:id="@+id/btnNotifications"
+            android:layout_width="345dp"
+            android:layout_height="68dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/tile_background"
+            android:backgroundTint="@null"
+            android:elevation="12dp"
+            android:text="🔔&#10;Notifications"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnLogout"

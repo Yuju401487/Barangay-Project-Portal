@@ -187,6 +187,13 @@ public class AddAnnouncementActivity extends AppCompatActivity {
                                                             Toast.LENGTH_SHORT
                                                     ).show();
 
+                                                    NotificationHelper.createNotification(
+                                                            "New Announcement",
+                                                            title,
+                                                            imageUrl,
+                                                            "resident"
+                                                    );
+
                                                     finish();
                                                 }
                                         );

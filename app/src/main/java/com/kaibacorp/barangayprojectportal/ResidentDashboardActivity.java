@@ -12,6 +12,8 @@ public class ResidentDashboardActivity extends AppCompatActivity {
 
     Button btnVotePoll;
     Button btnPollResults;
+    Button btnNotifications;
+
     private Button btnViewProjects;
     private Button btnViewAnnouncements;
     private Button btnLogout;
@@ -35,6 +37,9 @@ public class ResidentDashboardActivity extends AppCompatActivity {
 
         btnPollResults =
                 findViewById(R.id.btnPollResults);
+
+        btnNotifications =
+                findViewById(R.id.btnNotifications);
 
         btnViewProjects.setOnClickListener(v -> {
 
@@ -75,6 +80,17 @@ public class ResidentDashboardActivity extends AppCompatActivity {
                     new Intent(
                             ResidentDashboardActivity.this,
                             ViewPollsActivity.class
+                    )
+            );
+
+        });
+
+        btnNotifications.setOnClickListener(v -> {
+
+            startActivity(
+                    new Intent(
+                            ResidentDashboardActivity.this,
+                            NotificationsActivity.class
                     )
             );
 

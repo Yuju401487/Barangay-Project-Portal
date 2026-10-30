@@ -32,6 +32,8 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
+
+
         </LinearLayout>
 
         <!-- Tiles -->
@@ -39,8 +41,8 @@
         <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
             android:alignmentMode="alignMargins"
+            android:columnCount="2"
             android:useDefaultMargins="true">
 
             <Button
@@ -51,13 +53,11 @@
                 android:background="@drawable/tile_background"
                 android:backgroundTint="@null"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="📁&#10;&#10;Add Project"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_gravity="fill"/>
-
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnViewProjects"
@@ -67,13 +67,11 @@
                 android:background="@drawable/tile_background"
                 android:backgroundTint="@null"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="📋&#10;&#10;View Projects"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
-            `
 
             <Button
                 android:id="@+id/btnCreatePoll"
@@ -83,8 +81,8 @@
                 android:background="@drawable/tile_background"
                 android:backgroundTint="@null"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="🗳️&#10;&#10;Create Poll"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -97,15 +95,27 @@
                 android:background="@drawable/tile_background"
                 android:backgroundTint="@null"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="📊&#10;&#10;Poll Results"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         </GridLayout>
 
-        <!-- Logout -->
+        <!-- Actions -->
+
+        <Button
+            android:id="@+id/btnNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/tile_background"
+            android:backgroundTint="@null"
+            android:text="🔔 Notifications"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAddAnnouncement"
@@ -118,6 +128,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/btnViewAnnouncements"

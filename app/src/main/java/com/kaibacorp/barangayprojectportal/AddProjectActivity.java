@@ -189,13 +189,24 @@ public class AddProjectActivity extends AppCompatActivity {
                                 db.collection("projects")
                                         .add(project)
                                         .addOnSuccessListener(
-                                                documentReference ->
+                                                documentReference -> {
 
-                                                        Toast.makeText(
-                                                                AddProjectActivity.this,
-                                                                "Project Saved!",
-                                                                Toast.LENGTH_LONG
-                                                        ).show()
+                                                    Toast.makeText(
+                                                            AddProjectActivity.this,
+                                                            "Project Saved!",
+                                                            Toast.LENGTH_LONG
+                                                    ).show();
+
+                                                    NotificationHelper.createNotification(
+                                                            "New Project",
+                                                            title,
+                                                            imageUrl,
+                                                            "resident"
+                                                    );
+
+                                                    finish();
+
+                                                }
                                         )
 
                                         .addOnFailureListener(
