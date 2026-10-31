@@ -30,9 +30,11 @@
                 android:text="Admin Dashboard"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
-
-
+                android:textStyle="bold"
+                android:shadowColor="#80542C44"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="14" />
 
         </LinearLayout>
 
@@ -57,7 +59,11 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#80542C44"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="14" />
 
             <Button
                 android:id="@+id/btnViewProjects"
@@ -71,7 +77,11 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#80542C44"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="14" />
 
             <Button
                 android:id="@+id/btnCreatePoll"
@@ -85,7 +95,11 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#80542C44"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="14" />
 
             <Button
                 android:id="@+id/btnViewPolls"
@@ -99,7 +113,11 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:shadowColor="#80542C44"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="14" />
 
         </GridLayout>
 
@@ -115,7 +133,11 @@
             android:text="🔔 Notifications"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#80542C44"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="14" />
 
         <Button
             android:id="@+id/btnReports"
@@ -127,7 +149,11 @@
             android:text="📈 Reports"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#80542C44"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="14" />
 
         <Button
             android:id="@+id/btnAddAnnouncement"
@@ -139,8 +165,11 @@
             android:text="📢 Add Announcement"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:shadowColor="#80542C44"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="14" />
 
         <Button
             android:id="@+id/btnViewAnnouncements"
@@ -152,7 +181,11 @@
             android:text="📣 View Announcements"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#80542C44"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="14" />
 
         <Button
             android:id="@+id/btnLogout"
@@ -164,7 +197,11 @@
             android:text="🚪 Logout"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:shadowColor="#80542C44"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="14" />
 
     </LinearLayout>
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431222866781",
+    "project_id": "barangay-project-portal",
+    "storage_bucket": "barangay-project-portal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431222866781:android:0e4a73979ec19276eb9eb4",
+        "android_client_info": {
+          "package_name": "com.kaibacorp.barangayprojectportal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbpcTPkDsp5riboKCIwearV5peS3pqCZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
