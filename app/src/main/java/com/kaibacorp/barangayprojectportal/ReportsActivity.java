@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.widget.Button;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,6 +63,12 @@ public class ReportsActivity extends AppCompatActivity {
                                 int expenseCount = 0;
                                 double totalExpense = 0;
 
+                                ArrayList<String> projectDetails =
+                                        new ArrayList<>();
+
+                                ArrayList<String> expenseDetails =
+                                        new ArrayList<>();
+
                                 Calendar now =
                                         Calendar.getInstance();
 
@@ -92,6 +102,38 @@ public class ReportsActivity extends AppCompatActivity {
                                                     == currentYear) {
 
                                         projectCount++;
+
+                                        String title =
+                                                doc.getString("title");
+
+                                        String budget =
+                                                doc.getString("budget");
+
+                                        String status =
+                                                doc.getString("status");
+
+                                        String dateStarted =
+                                                new SimpleDateFormat(
+                                                        "MMMM dd, yyyy",
+                                                        Locale.getDefault()
+                                                ).format(
+                                                        new Date(timestamp)
+                                                );
+
+                                        projectDetails.add(
+
+                                                "Project: "
+                                                        + title
+
+                                                        + "\nStarted: "
+                                                        + dateStarted
+
+                                                        + "\nBudget: PHP "
+                                                        + budget
+
+                                                        + "\nStatus: "
+                                                        + status
+                                        );
                                     }
                                 }
 
@@ -120,13 +162,38 @@ public class ReportsActivity extends AppCompatActivity {
 
                                         expenseCount++;
 
+                                        String expenseName =
+                                                doc.getString(
+                                                        "expenseName"
+                                                );
+
+                                        String amount =
+                                                doc.getString(
+                                                        "amount"
+                                                );
+
+                                        String expenseDate =
+                                                new SimpleDateFormat(
+                                                        "MMMM dd, yyyy",
+                                                        Locale.getDefault()
+                                                ).format(
+                                                        new Date(timestamp)
+                                                );
+
+                                        expenseDetails.add(
+
+                                                expenseName
+                                                        + " | PHP "
+                                                        + amount
+                                                        + " | "
+                                                        + expenseDate
+                                        );
+
                                         try {
 
                                             totalExpense +=
                                                     Double.parseDouble(
-                                                            doc.getString(
-                                                                    "amount"
-                                                            )
+                                                            amount
                                                     );
 
                                         } catch (Exception ignored) {
@@ -139,7 +206,9 @@ public class ReportsActivity extends AppCompatActivity {
                                         "MONTHLY REPORT",
                                         projectCount,
                                         expenseCount,
-                                        totalExpense
+                                        totalExpense,
+                                        projectDetails,
+                                        expenseDetails
                                 );
 
                             });
@@ -161,6 +230,12 @@ public class ReportsActivity extends AppCompatActivity {
                                 int projectCount = 0;
                                 int expenseCount = 0;
                                 double totalExpense = 0;
+
+                                ArrayList<String> projectDetails =
+                                        new ArrayList<>();
+
+                                ArrayList<String> expenseDetails =
+                                        new ArrayList<>();
 
                                 int currentYear =
                                         Calendar.getInstance()
@@ -189,6 +264,34 @@ public class ReportsActivity extends AppCompatActivity {
                                             == currentYear) {
 
                                         projectCount++;
+
+                                        String title =
+                                                doc.getString("title");
+
+                                        String budget =
+                                                doc.getString("budget");
+
+                                        String status =
+                                                doc.getString("status");
+
+                                        String dateStarted =
+                                                new java.text.SimpleDateFormat(
+                                                        "MMMM dd, yyyy",
+                                                        java.util.Locale.getDefault()
+                                                ).format(
+                                                        new java.util.Date(timestamp)
+                                                );
+
+                                        projectDetails.add(
+                                                "Project: "
+                                                        + title
+                                                        + "\nStarted: "
+                                                        + dateStarted
+                                                        + "\nBudget: PHP "
+                                                        + budget
+                                                        + "\nStatus: "
+                                                        + status
+                                        );
                                     }
                                 }
 
@@ -233,7 +336,9 @@ public class ReportsActivity extends AppCompatActivity {
                                         "ANNUAL REPORT",
                                         projectCount,
                                         expenseCount,
-                                        totalExpense
+                                        totalExpense,
+                                        projectDetails,
+                                        expenseDetails
                                 );
 
                             });
@@ -247,8 +352,11 @@ public class ReportsActivity extends AppCompatActivity {
             String reportTitle,
             int projects,
             int expenses,
-            double total
-    ) {
+            double total,
+            ArrayList<String> projectDetails,
+            ArrayList<String> expenseDetails
+    )
+    {
 
         PdfDocument pdfDocument =
                 new PdfDocument();
@@ -314,6 +422,58 @@ public class ReportsActivity extends AppCompatActivity {
                 y,
                 paint
         );
+
+        y += 70;
+
+        page.getCanvas().drawText(
+                "PROJECT DETAILS",
+                x,
+                y,
+                paint
+        );
+
+        for (String project : projectDetails) {
+
+            y += 35;
+
+            String[] lines =
+                    project.split("\n");
+
+            for (String line : lines) {
+
+                page.getCanvas().drawText(
+                        line,
+                        x,
+                        y,
+                        paint
+                );
+
+                y += 25;
+            }
+
+            y += 15;
+        }
+
+        y += 20;
+
+        page.getCanvas().drawText(
+                "EXPENSE DETAILS",
+                x,
+                y,
+                paint
+        );
+
+        for (String expense : expenseDetails) {
+
+            y += 25;
+
+            page.getCanvas().drawText(
+                    expense,
+                    x,
+                    y,
+                    paint
+            );
+        }
 
         pdfDocument.finishPage(page);
 

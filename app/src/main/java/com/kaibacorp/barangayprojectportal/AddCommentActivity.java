@@ -72,10 +72,6 @@ public class AddCommentActivity extends AppCompatActivity {
                     comment
             );
 
-            data.put(
-                    "author",
-                    "Resident"
-            );
 
             data.put(
                     "likes",
@@ -92,33 +88,56 @@ public class AddCommentActivity extends AppCompatActivity {
                     )
             );
 
-            db.collection("comments")
-                    .add(data)
-                    .addOnSuccessListener(ref -> {
+            String uid =
+                    com.google.firebase.auth.FirebaseAuth
+                            .getInstance()
+                            .getCurrentUser()
+                            .getUid();
 
-                        Toast.makeText(
-                                this,
-                                "Comment Submitted",
-                                Toast.LENGTH_SHORT
-                        ).show();
+            db.collection("users")
+                    .document(uid)
+                    .get()
+                    .addOnSuccessListener(userDoc -> {
 
-                        NotificationHelper.createNotification(
-                                "New Comment",
-                                comment,
-                                "",
-                                "admin"
+                        String fullName =
+                                userDoc.getString(
+                                        "fullname"
+                                );
+
+                        data.put(
+                                "author",
+                                fullName
                         );
 
-                        finish();
+                        db.collection("comments")
+                                .add(data)
+                                .addOnSuccessListener(ref -> {
 
-                    })
-                    .addOnFailureListener(e -> {
+                                    Toast.makeText(
+                                            this,
+                                            "Comment Submitted",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
 
-                        Toast.makeText(
-                                this,
-                                e.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show();
+                                    NotificationHelper.createNotification(
+                                            "New Comment",
+                                            comment,
+                                            "",
+                                            "admin"
+                                    );
+
+                                    finish();
+
+                                })
+                                .addOnFailureListener(e -> {
+
+                                    Toast.makeText(
+                                            this,
+                                            e.getMessage(),
+                                            Toast.LENGTH_LONG
+                                    ).show();
+
+                                });
 
                     });
 
