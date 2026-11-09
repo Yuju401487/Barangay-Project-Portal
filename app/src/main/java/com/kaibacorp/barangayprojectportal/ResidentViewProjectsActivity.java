@@ -300,6 +300,40 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
                                 )
                         );
 
+                        Button btnViewRatings =
+                                new Button(this);
+
+                        btnViewRatings.setText(
+                                "VIEW RATINGS"
+                        );
+
+                        btnViewRatings.setTextColor(
+                                Color.WHITE
+                        );
+
+                        btnViewRatings.setBackgroundTintList(
+                                ColorStateList.valueOf(
+                                        Color.parseColor("#EC407A")
+                                )
+                        );
+
+                        Button btnRateProject =
+                                new Button(this);
+
+                        btnRateProject.setText(
+                                "RATE PROJECT"
+                        );
+
+                        btnRateProject.setTextColor(
+                                Color.WHITE
+                        );
+
+                        btnRateProject.setBackgroundTintList(
+                                ColorStateList.valueOf(
+                                        Color.parseColor("#EC407A")
+                                )
+                        );
+
 
                         btnViewTimeline.setText(
                                 "VIEW TIMELINE"
@@ -412,6 +446,50 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
 
                         });
 
+                        btnViewRatings.setOnClickListener(v -> {
+
+                            Intent intent =
+                                    new Intent(
+                                            ResidentViewProjectsActivity.this,
+                                            ViewRatingsActivity.class
+                                    );
+
+                            intent.putExtra(
+                                    "PROJECT_ID",
+                                    document.getId()
+                            );
+
+                            intent.putExtra(
+                                    "PROJECT_TITLE",
+                                    title
+                            );
+
+                            startActivity(intent);
+
+                        });
+
+                        btnRateProject.setOnClickListener(v -> {
+
+                            Intent intent =
+                                    new Intent(
+                                            ResidentViewProjectsActivity.this,
+                                            RateProjectActivity.class
+                                    );
+
+                            intent.putExtra(
+                                    "PROJECT_ID",
+                                    document.getId()
+                            );
+
+                            intent.putExtra(
+                                    "PROJECT_TITLE",
+                                    title
+                            );
+
+                            startActivity(intent);
+
+                        });
+
 
                         btnViewTimeline.setOnClickListener(v -> {
 
@@ -436,8 +514,15 @@ public class ResidentViewProjectsActivity extends AppCompatActivity {
                         card.addView(btnDetails);
                         card.addView(btnViewTimeline);
                         card.addView(btnFundSummary);
+
+                        if ("Archived".equalsIgnoreCase(status)) {
+                            card.addView(btnRateProject);
+                        }
+
                         card.addView(btnAddComment);
                         card.addView(btnViewComments);
+                        card.addView(btnViewRatings);
+
 
                         projectContainer.addView(card);
 

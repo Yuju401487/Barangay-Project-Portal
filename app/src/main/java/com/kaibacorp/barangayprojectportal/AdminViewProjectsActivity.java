@@ -252,6 +252,21 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
                         Button btnViewComments = new Button(this);
                         btnViewComments.setText("VIEW COMMENTS");
 
+                        Button btnViewRatings = new Button(this);
+                        btnViewRatings.setText("VIEW RATINGS");
+
+                        btnViewRatings.setTextColor(
+                                android.graphics.Color.WHITE
+                        );
+
+                        btnViewRatings.setBackgroundTintList(
+                                android.content.res.ColorStateList.valueOf(
+                                        android.graphics.Color.parseColor("#EC407A")
+                                )
+                        );
+
+
+
                         btnDetails.setBackgroundTintList(
                                 android.content.res.ColorStateList.valueOf(
                                         android.graphics.Color.parseColor("#EC407A")
@@ -458,6 +473,28 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
 
                         });
 
+                        btnViewRatings.setOnClickListener(v -> {
+
+                            Intent intent =
+                                    new Intent(
+                                            AdminViewProjectsActivity.this,
+                                            ViewRatingsActivity.class
+                                    );
+
+                            intent.putExtra(
+                                    "PROJECT_ID",
+                                    documentId
+                            );
+
+                            intent.putExtra(
+                                    "PROJECT_TITLE",
+                                    title
+                            );
+
+                            startActivity(intent);
+
+                        });
+
                         card.addView(projectImage);
                         card.addView(tv);
                         card.addView(btnDetails);
@@ -468,6 +505,7 @@ public class AdminViewProjectsActivity extends AppCompatActivity {
                         card.addView(btnAddExpense);
                         card.addView(btnFundSummary);
                         card.addView(btnViewComments);
+                        card.addView(btnViewRatings);
 
                         projectContainer.addView(card);
                     }
